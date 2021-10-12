@@ -17,7 +17,7 @@ class CreateSocialMediaTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('icon')->default('bi bi-facebook');
-            $table->string('link');
+            $table->string('link')->default('https://www.facebook.com/awalatechincorporation');
             $table->timestamps();
         });
     }

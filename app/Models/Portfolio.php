@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Portfolio extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'image',
+        'title',
+        'description',
+    ];
+
+    public function portfolio_category()
+    {
+        return $this->belongsTo(PortfolioCategory::class);
+    }
 }
