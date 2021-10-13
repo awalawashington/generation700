@@ -39,4 +39,5 @@ class BlogPost extends Model
             'large' => $this->getImagePath('large')
         ];
     }
+    
 }

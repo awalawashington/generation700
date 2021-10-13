@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\BlogPosts;
 
-use App\Http\Controllers\Controller;
+use App\Jobs\UploadImage;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class BlogPostController extends Controller
 {
@@ -36,7 +37,20 @@ class BlogPostController extends Controller
 
         //get the original file name and replace any spaces with _
         $filename = time()."_".  preg_replace('/\s+/', '_', strtolower($image->getClientOriginalName()));
-        dd($filename);
+        
+        //move image to the temporary storage
+        $tmp = $image->storeAs('uploads/original', $filename, 'tmp');
+
+        //create the database record for the post
+        $blog_post = auth()->user()->blog_posts()->create([
+            'image' => $filename,
+            'disk' => config('site.upload_disk')
+        ]);
+
+        //dispatch a job to handle the image manipulation
+        $this->dispatch(new UploadImage($blog_post));
+
+        return ("success");
         
     }
 
