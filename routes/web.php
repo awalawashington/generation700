@@ -54,8 +54,8 @@ Route::group(['middleware' => ['auth']], function()
     //blog post
     Route::get('/admin/blog/{slug}', [BlogPostController::class, 'adminSingleBlogPost']);
     Route::get('/admin/blogs', [BlogPostController::class, 'adminAllBlogPosts']);
-    Route::get('admin/blog',[BlogPostController::class ,'createView']);
-    Route::post('admin/blog',[BlogPostController::class ,'store']);
+    Route::get('/admin/blog',[BlogPostController::class ,'createView']);
+    Route::post('/admin/blog',[BlogPostController::class ,'store']);
     Route::put('/blog/{slug}', [BlogPostController::class, 'update']);
     Route::delete('/blog/{slug}', [BlogPostController::class, 'destroy']);
 

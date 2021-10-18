@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\BlogPosts;
 
 use App\Jobs\UploadImage;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -29,7 +30,9 @@ class BlogPostController extends Controller
     {
         //validate request
         $request->validate([
-            'image' => 'required|mimes:jpeg,gif,bmp,png|max:2048'
+            'image' => 'required|mimes:jpeg,gif,bmp,png|max:2048',
+            'title' => ['required', 'unique:blog_posts,title', 'max:60'],
+            'description' => ['string', 'required', 'min:20', 'max:140']
         ]);
 
         $image = $request->file('image');
@@ -44,7 +47,11 @@ class BlogPostController extends Controller
         //create the database record for the post
         $blog_post = auth()->user()->blog_posts()->create([
             'image' => $filename,
-            'disk' => config('site.upload_disk')
+            'disk' => config('site.upload_disk'),
+            'title' => $request->title,
+            'description' => $request->description,
+            'slug' => Str::slug($request->title),
+            'is_live' => true
         ]);
 
         //dispatch a job to handle the image manipulation
