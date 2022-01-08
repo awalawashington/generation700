@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class PortfolioCategory extends Model
 {
@@ -11,10 +11,11 @@ class PortfolioCategory extends Model
 
     protected $fillable = [
         'name',
+        'slug'
     ];
 
     public function portfolios()
     {
-        return $this->hasMany(Portfolio::class);
+        return $this->hasMany(Portfolio::class)->orderBy('id', 'DESC');
     }
 }

@@ -23,5 +23,13 @@ class UserSeeder extends Seeder
             'phone_number' => '+2547917472452',
             'password' => Hash::make('Awala@2021'),
         ]);
+
+        DB::table('users')->insert([
+            'name' => 'Dennis Okanga',
+            'email' => 'dennisokanga@gmail.com',
+            'email_verified_at' => Carbon::now(),
+            'phone_number' => '+2547917472452',
+            'password' => Hash::make('Okanga@2021'),
+        ]);
     }
 }

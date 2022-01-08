@@ -13,6 +13,7 @@ class Portfolio extends Model
         'image',
         'title',
         'description',
+        'portfolio_category_id'
     ];
 
     public function portfolio_category()

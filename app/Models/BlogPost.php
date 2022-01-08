@@ -28,7 +28,7 @@ class BlogPost extends Model
 
     public function comments()
     {
-        return $this->morphMany(Comment::class, 'commentable')->orderBy('created_at', 'asc');
+        return $this->morphMany(Comment::class, 'commentable')->orderBy('created_at', 'DESC');
     }
 
     public function getImagesAttribute(Type $var = null)

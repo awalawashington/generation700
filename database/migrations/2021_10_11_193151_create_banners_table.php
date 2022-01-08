@@ -17,7 +17,7 @@ class CreateBannersTable extends Migration
             $table->id();
             $table->string('image')->default('banner.jpg');
             $table->string('title')->default('Generation 700');
-            $table->string('description')->default('Generation 700');
+            $table->text('description')->default('Generation 700');
             $table->timestamps();
         });
     }

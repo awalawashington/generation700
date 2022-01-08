@@ -15,9 +15,10 @@ class CreateSocialMediaTable extends Migration
     {
         Schema::create('social_media', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('icon')->default('bi bi-facebook');
-            $table->string('link')->default('https://www.facebook.com/awalatechincorporation');
+            $table->string('facebook');
+            $table->string('twitter');
+            $table->string('instagram');
+            $table->string('linked_in');
             $table->timestamps();
         });
     }

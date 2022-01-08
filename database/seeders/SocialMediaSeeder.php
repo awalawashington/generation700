@@ -15,15 +15,10 @@ class SocialMediaSeeder extends Seeder
     public function run()
     {
         DB::table('social_media')->insert([
-            'name' => 'Facebook',
-            'icon' => 'bi bi-facebook',
-            'link' => 'https://www.facebook.com/awalatechincorporation'
-        ]);
-
-        DB::table('social_media')->insert([
-            'name' => 'Twitter',
-            'icon' => 'bi bi-twitter',
-            'link' => 'https://twitter.com/AwalaTech'
+            'facebook' => 'dennis.okanga.1',
+            'twitter' => 'kanga700',
+            'instagram' => 'okanga700',
+            'linked_in' => 'dennis-okanga-378666203'
         ]);
     }
 }
